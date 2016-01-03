@@ -1,0 +1,199 @@
+#include <iostream>
+
+
+
+
+using namespace std;
+
+
+
+
+// function prototypes
+
+void menu(int &);
+
+double sum(double [], int );
+
+double avg(double [], int );
+
+double mostExpensive(double [], int );
+
+
+
+
+int main()
+
+{
+
+    const int SIZE = 5;
+
+
+
+
+    int userChoice;      // local to main program
+
+                         // menu function will change it
+
+
+
+
+    double lunch[SIZE] = {17.65, 21.88,7.80, 12.15, 22.75};
+
+    do
+
+    {
+
+        menu(userChoice);
+
+        switch(userChoice)
+
+        {
+
+            case 1:
+
+                cout << "Your total weekly lunch spending is: "
+
+                     << sum(lunch, SIZE)
+
+                     << endl;
+
+                break;
+
+            case 2:
+
+                cout << "The most expensivce lunch is: "
+
+                     << mostExpensive(lunch, SIZE)
+
+                     << endl;
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+
+                cout << "Your average weekly lunch spending is: "
+
+                     << avg(lunch, SIZE)
+
+                     << endl;
+
+                break;
+
+            case 5:
+
+                break;
+
+            case 6:
+
+                cout << "Thank you for using LEA Program" << endl;
+
+                break;
+
+            default:
+
+                cout << "Please enter 1, 2, 3, 4, 5, or 6 only" << endl;
+
+        }
+
+
+
+
+    }while (userChoice != 6)
+
+    return 0;
+
+}
+
+
+
+
+double mostExpensive(double myLunches[], int arrSize)
+
+{
+
+    double maxLunch = myLunches[0];
+
+    for (int i=1; i<arrSize; i++)
+
+    {
+
+        if (myLunches[i] > maxLunch)
+
+            maxLunch = myLunches[i];
+
+    }
+
+
+
+
+    return maxLunch;
+
+}
+
+
+
+
+double avg(double myLunches[], int arrSize)
+
+{
+
+   double avg;
+
+   avg = sum(myLunches, arrSize)/arrSize;
+
+   return avg;
+
+}
+
+
+
+
+double sum(double myLunches[], int arrSize)
+
+{
+
+   double sum=0;
+
+   for (int i=0; i<arrSize; i++)
+
+   {
+
+      sum = sum + myLunches[i];
+
+   }
+
+
+
+
+   return sum;
+
+}
+
+
+
+
+void menu(int &uC)
+
+{
+
+    cout << "1. total amount spent the entire week " << endl;
+
+    cout << "2. Most expensive lunch" << endl;
+
+    cout << "3. least expensive lunch " << endl;
+
+    cout << "4. average spending per week" << endl;
+
+    cout << "5. display all lunches" << endl;
+
+    cout << "6. exit " << endl;
+
+    cout << "Your choice: ";
+
+    cin >> uC;
+
+}
